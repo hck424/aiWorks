@@ -19,7 +19,6 @@
 @property (nonatomic, strong) WKWebViewConfiguration *config;
 @property (nonatomic, strong) WKUserContentController *wkContentCtrl;
 @property (nonatomic, strong) WKWebView *createWebView;
-
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *width;
 @property (nonatomic, strong) NSString *height;
@@ -31,12 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWebView];
-}
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)setWebView {
