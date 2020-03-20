@@ -1,0 +1,6 @@
+framework module Pods_aiWorks {
+  umbrella header "Pods-aiWorks-umbrella.h"
+
+  export *
+  module * { export * }
+}

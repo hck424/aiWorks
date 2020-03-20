@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<script type="text/javascript">
+    function changeElement(type, width, height) {
+        var workFile = document.getElementById('workFile');
+        var div = workFile.nextSibling.nextSibling;
+        console.log(div.tagName);
+        var label = div.querySelector('label');
+        console.log(label.tagName);
+        label.onclick = nativeAppIOS('{type:'+type +',size:{w:'+width+',h:'+height+'}}');
+    }
+    function nativeAppIOS(msg) {
+        console.log(msg);
+        try {
+            webkit.messageHandlers.callbackHandler.postMessage(msg);
+        }
+        catch(error) {
+            alert(error);
+        }
+    }
+    function() {
+        webkit.messageHandlers.callbackHandler.postMessage('camera');
+    }
+</script>
+<body>
+    <h1>The input accept attribute</h1>
+    
+    <form action="/action_page.php">
+        <input type="file" name="workFile[]" id="workFile" />
+        <div>
+            <label for="workFile">파일첨부</label>
+        </div>
+        <input type="button" value="test" onclick="changeElement('carmera', '100', '200')"/>
+        
+        <label for="img">Select image:</label>
+        <!--<input type="file" id="img" name="img" accept="image/*" capture>-->
+        <!--<input type="file" id="img" name="img" accept="image/*">-->
+        <input type="file" id="img" name="img" accept="video/*" capture>
+        <button type="button" class="btn btn-default" onclick="scriptHandler('camera|size:1920x530')">카메라</button>
+        <button type="button" class="btn btn-default" onclick="scriptHandler('video')">비데오</button>
+        <input type="submit">
+    </form>
+    
+    <p><strong>Note:</strong> Because of security issues, this example will not allow you to upload files.</p>
+    
+</body>
+</html>
+
