@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2470E27B413A2A858637CBCD /* Pods_aiWorks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7BE3E3899BFD34343E9C84 /* Pods_aiWorks.framework */; };
+		1F95B8957DD853DA80EECD46 /* Pods_aiWorks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD158D421AB6FEF49528643 /* Pods_aiWorks.framework */; };
 		E515C5892409EC3800FCB7CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E515C5882409EC3800FCB7CB /* AppDelegate.m */; };
 		E515C58C2409EC3800FCB7CB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E515C58B2409EC3800FCB7CB /* SceneDelegate.m */; };
 		E515C5922409EC3800FCB7CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E515C5902409EC3800FCB7CB /* Main.storyboard */; };
@@ -26,9 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B7BE3E3899BFD34343E9C84 /* Pods_aiWorks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aiWorks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B95B9BA791B735F44451449 /* Pods-aiWorks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aiWorks.release.xcconfig"; path = "Target Support Files/Pods-aiWorks/Pods-aiWorks.release.xcconfig"; sourceTree = "<group>"; };
-		CEF5748A6D10809CC8435631 /* Pods-aiWorks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aiWorks.debug.xcconfig"; path = "Target Support Files/Pods-aiWorks/Pods-aiWorks.debug.xcconfig"; sourceTree = "<group>"; };
+		173CA42C9C50D1A197F1C669 /* Pods-aiWorks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aiWorks.debug.xcconfig"; path = "Target Support Files/Pods-aiWorks/Pods-aiWorks.debug.xcconfig"; sourceTree = "<group>"; };
+		350643B22BA6D4F93737A69A /* Pods-aiWorks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aiWorks.release.xcconfig"; path = "Target Support Files/Pods-aiWorks/Pods-aiWorks.release.xcconfig"; sourceTree = "<group>"; };
+		AAD158D421AB6FEF49528643 /* Pods_aiWorks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aiWorks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E515C5842409EC3800FCB7CB /* aiWorks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aiWorks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E515C5872409EC3800FCB7CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E515C5882409EC3800FCB7CB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			files = (
 				E99908EC24177CA400F6F1C2 /* WebKit.framework in Frameworks */,
 				E5DFC6B62417E8A90038E74B /* UIKit.framework in Frameworks */,
-				2470E27B413A2A858637CBCD /* Pods_aiWorks.framework in Frameworks */,
+				1F95B8957DD853DA80EECD46 /* Pods_aiWorks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +73,8 @@
 		960B158CEB389364A3CB9A93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CEF5748A6D10809CC8435631 /* Pods-aiWorks.debug.xcconfig */,
-				9B95B9BA791B735F44451449 /* Pods-aiWorks.release.xcconfig */,
+				173CA42C9C50D1A197F1C669 /* Pods-aiWorks.debug.xcconfig */,
+				350643B22BA6D4F93737A69A /* Pods-aiWorks.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 			children = (
 				E5DFC6B52417E8A90038E74B /* UIKit.framework */,
 				E99908EB24177CA400F6F1C2 /* WebKit.framework */,
-				0B7BE3E3899BFD34343E9C84 /* Pods_aiWorks.framework */,
+				AAD158D421AB6FEF49528643 /* Pods_aiWorks.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,12 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E515C59D2409EC3900FCB7CB /* Build configuration list for PBXNativeTarget "aiWorks" */;
 			buildPhases = (
-				404BC992E6F5B7C8830D89A8 /* [CP] Check Pods Manifest.lock */,
+				C4D7C90BC14228FC161DAA94 /* [CP] Check Pods Manifest.lock */,
 				E515C5802409EC3800FCB7CB /* Sources */,
 				E515C5812409EC3800FCB7CB /* Frameworks */,
 				E515C5822409EC3800FCB7CB /* Resources */,
-				C486032F27846BFC41AA8941 /* [CP] Embed Pods Frameworks */,
 				E953B7F52424CF4B00D51892 /* ShellScript */,
+				4A5DD01A7AFF2F5A4D668C70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,7 +215,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		404BC992E6F5B7C8830D89A8 /* [CP] Check Pods Manifest.lock */ = {
+		4A5DD01A7AFF2F5A4D668C70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4D7C90BC14228FC161DAA94 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,23 +252,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C486032F27846BFC41AA8941 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aiWorks/Pods-aiWorks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E953B7F52424CF4B00D51892 /* ShellScript */ = {
@@ -423,12 +423,13 @@
 		};
 		E515C59E2409EC3900FCB7CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEF5748A6D10809CC8435631 /* Pods-aiWorks.debug.xcconfig */;
+			baseConfigurationReference = 173CA42C9C50D1A197F1C669 /* Pods-aiWorks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 6QB33R9MCL;
+				DEVELOPMENT_TEAM = F73R6F844W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
 				INFOPLIST_FILE = aiWorks/Info.plist;
@@ -436,8 +437,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				OHTER_SWIFT_FLAGS = "-DDEVELOPMENT";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.aiWorks;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.aiworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT)/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -447,12 +449,13 @@
 		};
 		E515C59F2409EC3900FCB7CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B95B9BA791B735F44451449 /* Pods-aiWorks.release.xcconfig */;
+			baseConfigurationReference = 350643B22BA6D4F93737A69A /* Pods-aiWorks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 6QB33R9MCL;
+				DEVELOPMENT_TEAM = F73R6F844W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
 				INFOPLIST_FILE = aiWorks/Info.plist;
@@ -460,8 +463,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				OHTER_SWIFT_FLAGS = "-DDEVELOPMENT";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.aiWorks;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.aiworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT)/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

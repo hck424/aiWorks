@@ -13,7 +13,7 @@
 #import "UIImage+Utility.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
-@interface WkWebViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface WkWebViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate/*, UINavigationControllerDelegate, UIImagePickerControllerDelegate*/>
 
 @property (weak, nonatomic) IBOutlet UIView *baseView;
 @property (nonatomic, strong) WKWebViewConfiguration *config;
@@ -248,7 +248,7 @@
     NSURL *url = navigationAction.request.URL;
     NSLog(@"== url: %@", url);
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        if ([url.host isEqualToString:@"www.aiworks.co.kr"]
+        if ([SERVER_URL hasSuffix:url.host]
             && ([url.scheme isEqualToString:@"http"]
                 || [url.scheme isEqualToString:@"https"])) {
             
@@ -341,24 +341,24 @@
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"== message: %@" , message);
-    if ([message.name isEqualToString:@"callbackHandler"]) {
-        NSString *param = message.body;
-        if (param.length > 0) {
-            NSArray *arr = [param componentsSeparatedByString:@"|"];
-            self.type = [arr firstObject];
-            if (arr.count == 3) {
-                self.width = [arr objectAtIndex:1];
-                self.height = [arr objectAtIndex:2];
-            }
-            
-            if ([_type isEqualToString:@"I"]) {
-                [self openCamera:UIImagePickerControllerSourceTypeCamera];
-            }
-            else {
-                [self openCamera:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-            }
-        }
-    }
+//    if ([message.name isEqualToString:@"callbackHandler"]) {
+//        NSString *param = message.body;
+//        if (param.length > 0) {
+//            NSArray *arr = [param componentsSeparatedByString:@"|"];
+//            self.type = [arr firstObject];
+//            if (arr.count == 3) {
+//                self.width = [arr objectAtIndex:1];
+//                self.height = [arr objectAtIndex:2];
+//            }
+//
+//            if ([_type isEqualToString:@"I"]) {
+//                [self openCamera:UIImagePickerControllerSourceTypeCamera];
+//            }
+//            else {
+//                [self openCamera:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+//            }
+//        }
+//    }
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
@@ -404,47 +404,47 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
-    [scrollView.pinchGestureRecognizer setEnabled:NO];
-}
-- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return nil;
-}
-
-- (void)openCamera:(UIImagePickerControllerSourceType)sourceType {
-    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
-    imgPicker.delegate = self;
-    imgPicker.sourceType = sourceType;
-    imgPicker.allowsEditing = NO;
-    
-    if (sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
-        imgPicker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeMovie, (NSString *)kUTTypeImage, nil];
-        imgPicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
-        imgPicker.videoQuality = UIImagePickerControllerQualityTypeHigh;
-    }
-    [self presentViewController:imgPicker animated:NO completion:nil];
-}
-#pragma mark - UINavigationControllerDelegate,UIImagePickerControllerDelegate
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:NO completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
-    
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-        UIImage *resizeImg = img;
-        if (img != nil && _width.length > 0 && _height.length > 0) {
-            resizeImg = [img resizedImageWithBounds:CGSizeMake([_width floatValue], [_height floatValue])];
-        }
-        
-        NSData *data = UIImagePNGRepresentation(resizeImg);
-        NSString *base64 = [data base64EncodedStringWithOptions:0];
-        NSString *js = [NSString stringWithFormat:@"drawCanvas(%@)", base64];
-        [_wkWebView evaluateJavaScript:js completionHandler:^(id _Nullable result, NSError * _Nullable error) {
-            int k = 0;
-        }];
-    }
-    [picker dismissViewControllerAnimated:NO completion:nil];
-}
+//- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+//    [scrollView.pinchGestureRecognizer setEnabled:NO];
+//}
+//- (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+//    return nil;
+//}
+//
+//- (void)openCamera:(UIImagePickerControllerSourceType)sourceType {
+//    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+//    imgPicker.delegate = self;
+//    imgPicker.sourceType = sourceType;
+//    imgPicker.allowsEditing = NO;
+//
+//    if (sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
+//        imgPicker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeMovie, (NSString *)kUTTypeImage, nil];
+//        imgPicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
+//        imgPicker.videoQuality = UIImagePickerControllerQualityTypeHigh;
+//    }
+//    [self presentViewController:imgPicker animated:NO completion:nil];
+//}
+//#pragma mark - UINavigationControllerDelegate,UIImagePickerControllerDelegate
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//    [picker dismissViewControllerAnimated:NO completion:nil];
+//}
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+//
+//    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+//        UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+//        UIImage *resizeImg = img;
+//        if (img != nil && _width.length > 0 && _height.length > 0) {
+//            resizeImg = [img resizedImageWithBounds:CGSizeMake([_width floatValue], [_height floatValue])];
+//        }
+//
+//        NSData *data = UIImagePNGRepresentation(resizeImg);
+//        NSString *base64 = [data base64EncodedStringWithOptions:0];
+//        NSString *js = [NSString stringWithFormat:@"drawCanvas(%@)", base64];
+//        [_wkWebView evaluateJavaScript:js completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+//            int k = 0;
+//        }];
+//    }
+//    [picker dismissViewControllerAnimated:NO completion:nil];
+//}
 @end

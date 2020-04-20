@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:656277582204:ios:1ece55c563b2507dab74f9</string>
+	<string>1:656277582204:ios:f842a62857932558ab74f9</string>
 	<key>DATABASE_URL</key>
 	<string>https://aiworks-b6179.firebaseio.com</string>
 </dict>
