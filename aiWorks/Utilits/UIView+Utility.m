@@ -46,42 +46,42 @@
     
 }
 
-//- (void)startAnimation{
-//    UIImageView *ivIndicator = (UIImageView *)[self viewWithTag:TAG_LOADING_IMG];
-//
-////    NSArray *values = [NSArray arrayWithObjects:
-////                       [NSNumber numberWithFloat: -0.0],
-////                       [NSNumber numberWithFloat: -M_PI_4],
-////                       [NSNumber numberWithFloat: -2*M_PI_2],
-////                       [NSNumber numberWithFloat: -2*M_PI],
-////                       nil];
-////
-////    NSArray *timing = [NSArray arrayWithObjects:
-////                       [NSNumber numberWithFloat:0.0],
-////                       [NSNumber numberWithFloat:0.25],
-////                       [NSNumber numberWithFloat:0.5],
-////                       [NSNumber numberWithFloat:0.75],
-////                       nil];
-////
-////    float duration = 1.5f;
-////    CAKeyframeAnimation *rotation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
-////    rotation.values = values;
-////    rotation.keyTimes = timing;
-////    rotation.duration = duration;
-////    rotation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-////    rotation.repeatCount = INT_MAX;
-//
+- (void)startAnimation{
+    UIImageView *ivIndicator = (UIImageView *)[self viewWithTag:TAG_LOADING_IMG];
+
+    NSArray *values = [NSArray arrayWithObjects:
+                       [NSNumber numberWithFloat: -0.0],
+                       [NSNumber numberWithFloat: -M_PI_4],
+                       [NSNumber numberWithFloat: -2*M_PI_2],
+                       [NSNumber numberWithFloat: -2*M_PI],
+                       nil];
+
+    NSArray *timing = [NSArray arrayWithObjects:
+                       [NSNumber numberWithFloat:0.0],
+                       [NSNumber numberWithFloat:0.25],
+                       [NSNumber numberWithFloat:0.5],
+                       [NSNumber numberWithFloat:0.75],
+                       nil];
+
+    float duration = 1.5f;
+    CAKeyframeAnimation *rotation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    rotation.values = values;
+    rotation.keyTimes = timing;
+    rotation.duration = duration;
+    rotation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    rotation.repeatCount = INT_MAX;
+
 //    CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
 //    rotation.fromValue = [NSNumber numberWithFloat:0.0f];
 //    rotation.toValue = [NSNumber numberWithFloat:-2*M_PI];
 //    rotation.duration = 1;
 //    rotation.repeatCount = INFINITY;
-//
-//    [ivIndicator.layer addAnimation:rotation forKey:@"loading"];
-//    self.hidden = NO;
-//    [[self superview] bringSubviewToFront:self];
-//
-//}
+
+    [ivIndicator.layer addAnimation:rotation forKey:@"loading"];
+    self.hidden = NO;
+    [[self superview] bringSubviewToFront:self];
+
+}
 
 - (void)stopAnimation {
     self.hidden = YES;

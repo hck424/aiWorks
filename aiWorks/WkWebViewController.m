@@ -13,6 +13,12 @@
 #import "UIImage+Utility.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
+//aiWorks 계정
+//id: admin
+//pw: dnjrtm1!
+
+
+//테스트 계정: mjyou // 웍스1!
 @interface WkWebViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler, UIScrollViewDelegate/*, UINavigationControllerDelegate, UIImagePickerControllerDelegate*/>
 
 @property (weak, nonatomic) IBOutlet UIView *baseView;
@@ -55,9 +61,14 @@
     _config.processPool = wkProcessPool;
     _config.preferences = wkPreferences;
     _config.preferences.javaScriptCanOpenWindowsAutomatically = YES;
-    _config.allowsInlineMediaPlayback = NO;
-    _config.mediaTypesRequiringUserActionForPlayback = NO;
-    _config.allowsPictureInPictureMediaPlayback = NO;
+    _config.ignoresViewportScaleLimits = YES;
+    _config.suppressesIncrementalRendering = YES;
+    _config.allowsInlineMediaPlayback = YES;
+    _config.allowsAirPlayForMediaPlayback = NO;
+    _config.allowsPictureInPictureMediaPlayback = YES;
+    _config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeAll;
+    _config.mediaTypesRequiringUserActionForPlayback = YES;
+    
     //    _config.applicationNameForUserAgent = @"APP_AIWORKS_IOS";
     
     self.wkWebView = [[WKWebView alloc] initWithFrame:_baseView.bounds configuration:_config];
@@ -152,6 +163,9 @@
     else if ([type isEqualToString:@"I"]) {
         jsString = @"document.getElementById('workFile').setAttribute('capture','');";
     }
+    else if ([type isEqualToString:@"S"]) {
+        jsString = @"var element = document.getElementById('workFile'); element.setAttribute('accept', 'video/*'); element.setAttribute('capture','');";
+    }
     return jsString;
 }
 
@@ -212,12 +226,13 @@
     
     if (isMobile) {
         NSString *js = [self getProjectTypeScript:project_type];
-        
-        [webView evaluateJavaScript:js completionHandler:^(id _Nullable result, NSError * _Nullable error) {
-            if (!error) {
-                NSLog(@"== error: %@" ,error.localizedDescription);
-            }
-        }];
+        if (js.length > 0) {
+            [webView evaluateJavaScript:js completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+                if (!error) {
+                    NSLog(@"== error: %@" ,error.localizedDescription);
+                }
+            }];
+        }
     }
 }
 
@@ -227,7 +242,7 @@
     NSURL *url = navigationAction.request.URL;
     NSLog(@"== url: %@", url);
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        if ([url.host isEqualToString:@"www.aiworks.co.kr"]
+        if (url.host.length > 0 && [[url.host lowercaseString] containsString:@"aiworks"]
             && ([url.scheme isEqualToString:@"http"]
                 || [url.scheme isEqualToString:@"https"])) {
             
@@ -248,7 +263,8 @@
     NSURL *url = navigationAction.request.URL;
     NSLog(@"== url: %@", url);
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        if ([SERVER_URL hasSuffix:url.host]
+        if (url.host.length > 0
+            && [[url.host lowercaseString] containsString:@"aiworks"]
             && ([url.scheme isEqualToString:@"http"]
                 || [url.scheme isEqualToString:@"https"])) {
             

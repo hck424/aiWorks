@@ -6,15 +6,15 @@
 //  Copyright © 2020 김학철. All rights reserved.
 //
 
-#define real //리얼서버
-//#define test    //테스트 서버
+//#define real //리얼서버
+#define test    //테스트 서버
 
 
 #if defined(real)
 #define SERVER_URL @"http://www.aiworks.co.kr"
 
 #elif defined(test)
-#define SERVER_URL @"http://52.231.201.18"
+#define SERVER_URL  @"https://test.aiworks.co.kr/" //@"http://52.231.201.18"
 
 #endif
 
